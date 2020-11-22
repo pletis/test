@@ -7,7 +7,7 @@ var auth = require('../lib/auth.js');
 
 router.get('/', function(request,response){
 
-    
+    console.log('/', request.user);
     var title = '안녕 나는 노르웨이숲이야';
     var description = '접근을 원하시면 로그인을 하세요';
     var list = template.list(request.list);

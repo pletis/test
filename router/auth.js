@@ -2,11 +2,7 @@ var express = require('express');
 var router = express.Router();
 var template = require('../lib/template');
 
-var authData = {
-  email: 'tjswk70000@naver.com',
-  password: '111111',
-  nickname: 'pletis'
-}
+
 
 router.get('/login', (request, response) => {
   var title = 'WEB - create';
@@ -23,22 +19,6 @@ router.get('/login', (request, response) => {
   response.send(html);
 
 });
-
-router.post('/login_process',function(request,response){
-  var post = request.body;
-  var email = post.email;
-  var password = post.password;
-  if(email === authData.email && password === authData.password){
-      request.session.is_logined = true;
-      request.session.nickname = authData.nickname;
-      request.session.save(function(){
-        response.redirect('/');
-      });
-      
-  }else{
-      response.send('WHO?');
-      }
-})
 
 router.get('/logout', (request, response) => {
   request.session.destroy(function(err){
